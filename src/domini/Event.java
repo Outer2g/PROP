@@ -8,6 +8,13 @@ public class Event {
 	private Date data;
 	private String tipus;
 	private Vector<Diputat> diputatsAssociats;
+	private boolean trobat(Diputat d){
+		int n=diputatsAssociats.size();
+		for(int i=0;i<n;++i){
+			if(diputatsAssociats.get(i).nom.equals(d.nom)) return true;
+		}
+		return false;
+	}
 	public Event(String tipusEvent,Date dataEvent,String nomEvent){
 		nom=nomEvent;
 		data= dataEvent;
@@ -17,7 +24,7 @@ public class Event {
 	public void associarDiputat(Diputat diputat){
 		Exception exc=new Exception("Diputat ja estava associat");
 		try{
-			if(this.diputatsAssociats.contains(diputat)) throw exc;
+			if(trobat(diputat)) throw exc;
 			else this.diputatsAssociats.addElement(diputat);
 		}
 		catch(Exception e){
