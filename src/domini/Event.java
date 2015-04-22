@@ -55,6 +55,16 @@ public class Event {
 	public void associarParlament(Parlament parlamentAssociat){
 		this.diputatsAssociats=new Vector<Diputat>(parlamentAssociat.getParlament());
 	}
+	public void eliminarParlament(Parlament parlament){
+		Exception exc= new Exception("Error: No hi ha cap diputat associat");
+		try{
+			if(this.diputatsAssociats.size()==0) throw exc;
+			else this.diputatsAssociats.removeAll(parlament.getParlament());
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
 	public void associarDiputats(Vector<Diputat> diputats){
 		boolean b= this.diputatsAssociats.addAll(diputats);
 	}

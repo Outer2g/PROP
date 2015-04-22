@@ -7,9 +7,11 @@ import java.util.Vector;
 
 import domini.Diputat;
 import domini.Event;
+import domini.Parlament;
 
 	public class EventDriver {
 		public static Event evento;
+		public static Parlament parlament;
 		public static Scanner inputs= new Scanner(System.in);
 		public static void imprimeDiputados(){
 			int n=evento.consultarAssociats().size();
@@ -58,13 +60,33 @@ import domini.Event;
 			}
 			evento.eliminarDiputats(v);
 		}
+		private static void tryAssociarParlament(){
+			evento.associarParlament(parlament);
+			System.out.println("s'ha afegit el parlament (antonio y jose)");
+		}
+		private static void usage(){
+			System.out.println("Escriu el numero de la prova desitjada: ");
+			System.out.println("0: associar diputat");
+			System.out.println("1: desassociar diputat");
+			System.out.println("2: associar varis diputats");
+			System.out.println("3: desassociar diversos diputats");
+			System.out.println("4: Associar Parlament");
+			System.out.println("5: Desassociar Parlament");
+			System.out.println("6: Modificar tipus d'event");
+			System.out.println("7: Consultar tipus d'event");
+			System.out.println("8: Modificar nom del event");
+			System.out.println("9: Consultar nom del event");
+			System.out.println("10: Modificar data");
+			System.out.println("11:  Consultar data");
+			System.out.println("12: imprimeix diputats associats");
+		}
 		public static void main(String[] args) {
 			int n=0;
 			Scanner inputs=new Scanner(System.in);
 			Date data=new Date(2015,4,17);
 			evento=new Event("tipus1",data,"nom1");
-			System.out.println("Escriu numero de test, per a "
-					+ "veure tests disponibles pulsa \"0\":");
+			parlament=new Parlament();
+			usage();
 			while (n!=-1){
 				n=inputs.nextInt();
 				switch (n){
@@ -77,11 +99,14 @@ import domini.Event;
 				case 2:
 					tryAssociarDiputats();
 					break;
-				case 3:
+				case 12:
 					imprimeDiputados();
 					break;
-				case 4:
+				case 3:
 					tryEliminarDiputats();
+					break;
+				case 4:
+					tryAssociarParlament();
 					break;
 				}
 			}
