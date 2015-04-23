@@ -31,9 +31,6 @@ public class Event {
 			System.out.println(e.getMessage());
 			
 		}
-		finally{
-			
-		}
 	}
 	public void eliminarDiputat(Diputat diputat){
 		Exception myexc=new Exception("Error al eliminar diputat: no hi ha diputats associats"
@@ -44,9 +41,6 @@ public class Event {
 		}
 		catch(Exception p){
 			System.out.println(p.getMessage());
-		}
-		finally{
-			
 		}
 	}
 	public void eliminarDiputats(Vector<Diputat> diputats){
@@ -68,7 +62,7 @@ public class Event {
 	public void associarDiputats(Vector<Diputat> diputats){
 		boolean b= this.diputatsAssociats.addAll(diputats);
 	}
-	//if votacio -> demana un parlament
+	//if votacio -> borra associados
 	public void modificarTipus(String nom,Parlament p){
 		if (nom.contentEquals("votacio")){
 			diputatsAssociats.removeAllElements();
