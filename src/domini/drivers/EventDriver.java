@@ -1,7 +1,7 @@
 
 	package domini.drivers;
 
-	import java.util.Date;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -85,10 +85,44 @@ import domini.Parlament;
 
 			System.out.println("s'ha dessasociat el parlament");
 		}
+		public static void imprimirException(String s){
+			System.out.println(s);
+		}
+		private static void tryModificarTipusEvent(){
+			System.out.println("introdueixi el nou tipus");
+			String s= inputs.next();
+			evento.modificarTipus(s);
+		}
+		private static void tryConsultaTipusEvent(){
+			System.out.print("Tipus event: ");
+			System.out.println(evento.consultarTipus());
+		}
+		private static void tryModificarNom(){
+			System.out.print("introdueixi el nou nom");
+			String s=inputs.next();
+			evento.modificarNom(s);
+		}
+		private static void tryConsultarNom(){
+			System.out.print("Nom event: ");
+			System.out.println(evento.consultarNomEvent());
+		}
+		private static void tryModificarData(){
+			System.out.print("Introdueixi la data en el format : dia mes any");
+			int dia=inputs.nextInt();
+			int mes=inputs.nextInt();
+			int any=inputs.nextInt();
+			Date d= new Date(any,mes,dia);
+			evento.modificarData(d);
+		}
+		private static void tryConsultarData(){
+			System.out.print("Data del event ");
+			System.out.println(evento.consultarData());
+		}
+		
 		public static void main(String[] args) {
 			int n=0;
 			Scanner inputs=new Scanner(System.in);
-			Date data=new Date(2015,4,17);
+			Date data=new Date(2015,04,17);
 			evento=new Event("tipus1",data,"nom1");
 			parlament=new Parlament();
 			usage();
@@ -115,6 +149,24 @@ import domini.Parlament;
 					break;
 				case 5:
 					tryEliminarParlament();
+					break;
+				case 6:
+					tryModificarTipusEvent();
+					break;
+				case 7:
+					tryConsultaTipusEvent();
+					break;
+				case 8:
+					tryModificarNom();
+					break;
+				case 9:
+					tryConsultarNom();
+					break;
+				case 10:
+					tryModificarData();
+					break;
+				case 11:
+					tryConsultarData();
 					break;
 				}
 			}

@@ -3,6 +3,8 @@ package domini;
 import java.util.Date;
 import java.util.Vector;
 
+import domini.drivers.EventDriver;
+
 public class Event {
 	private String nom;
 	private Date data;
@@ -28,7 +30,7 @@ public class Event {
 			else this.diputatsAssociats.addElement(diputat);
 		}
 		catch(Exception e){
-			System.out.println(e.getMessage());
+			EventDriver.imprimirException(e.getMessage());
 			
 		}
 	}
@@ -40,7 +42,7 @@ public class Event {
 			if (!this.diputatsAssociats.removeElement(diputat)) throw myexc;
 		}
 		catch(Exception p){
-			System.out.println(p.getMessage());
+			EventDriver.imprimirException(p.getMessage());
 		}
 	}
 	public void eliminarDiputats(Vector<Diputat> diputats){
@@ -56,7 +58,7 @@ public class Event {
 			else this.diputatsAssociats.removeAll(parlament.getParlament());
 		}
 		catch(Exception e){
-			System.out.println(e.getMessage());
+			EventDriver.imprimirException(e.getMessage());
 		}
 	}
 	public void associarDiputats(Vector<Diputat> diputats){
