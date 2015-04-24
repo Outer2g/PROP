@@ -44,14 +44,14 @@ import domini.Parlament;
 				d=new Diputat(s);
 				v.addElement(d);
 			}
-			evento.associarDiputats(v);
+			if(n>0)evento.associarDiputats(v);
 		}
 		private static void tryEliminarDiputats(){
 			System.out.print("Especifiqui el numero de dipuats a desassociar: ");
 			int n= inputs.nextInt();
 			Vector<Diputat> v=new Vector<Diputat>(n);
 			Diputat d;
-			System.out.print("Especifiqui els diputats: ");
+			if(n>0)System.out.print("Especifiqui els diputats: ");
 			String s;
 			for(int i=0;i<n;++i){
 				s=inputs.next();
@@ -80,6 +80,11 @@ import domini.Parlament;
 			System.out.println("11:  Consultar data");
 			System.out.println("12: imprimeix diputats associats");
 		}
+		private static void tryEliminarParlament(){
+			evento.eliminarParlament(parlament);
+
+			System.out.println("s'ha dessasociat el parlament");
+		}
 		public static void main(String[] args) {
 			int n=0;
 			Scanner inputs=new Scanner(System.in);
@@ -107,6 +112,9 @@ import domini.Parlament;
 					break;
 				case 4:
 					tryAssociarParlament();
+					break;
+				case 5:
+					tryEliminarParlament();
 					break;
 				}
 			}

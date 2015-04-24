@@ -62,11 +62,10 @@ public class Event {
 	public void associarDiputats(Vector<Diputat> diputats){
 		boolean b= this.diputatsAssociats.addAll(diputats);
 	}
-	//if votacio -> borra associados
-	public void modificarTipus(String nom,Parlament p){
+	
+	public void modificarTipus(String nom){
 		if (nom.contentEquals("votacio")){
 			diputatsAssociats.removeAllElements();
-			diputatsAssociats.addAll(p.getParlament());
 		}
 		else{
 			this.tipus=nom;
