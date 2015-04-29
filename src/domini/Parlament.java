@@ -3,16 +3,16 @@ package domini;
 import java.util.Vector;
 
 public class Parlament {
-	private Vector<Diputat> diputats;
+	private Vector<Integer> diputats;
 	public Parlament() {
-		diputats=new Vector<Diputat>();
-		Diputat lol=new Diputat("antonio");
-		Diputat lol2=new Diputat("jose");
-		diputats.addElement(lol2);
-		diputats.addElement(lol);
+		diputats=new Vector<Integer>();
+		Integer d1=new Integer(1);
+		Integer d2=new Integer(2);
+		diputats.addElement(d1);
+		diputats.addElement(d2);
 	}
-	public Vector<Diputat> getParlament(){
+	public Vector<Integer> getParlament(){
 		
-		return (Vector<Diputat>) diputats.clone();
+		return (Vector<Integer>) diputats.clone();
 	}
 }
