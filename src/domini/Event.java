@@ -21,7 +21,7 @@ public class Event {
 		this.tipus=tipusEvent;
 		this.diputatsAssociats= new Vector<Integer>();
 	}
-	public void associarDiputat(int diputat){
+	public void associarDiputat(Integer diputat){
 		Exception exc=new Exception("Diputat ja estava associat");
 		try{
 			if(trobat(diputat)) throw exc;
@@ -32,7 +32,7 @@ public class Event {
 			
 		}
 	}
-	public void eliminarDiputat(int diputat){
+	public void eliminarDiputat(Integer diputat){
 		Exception myexc=new Exception("Error al eliminar diputat: no hi ha diputats associats"
 				+ " o el diputat no existeix");
 		try{

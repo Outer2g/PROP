@@ -12,7 +12,7 @@ public class EventVotacio extends Event {
 		super("Votacio",dataEvent,nomEvent);
 		votacions= new ArrayList[4];
 	}
-	public void IntroduirDades(int diputat,int votacio){
+	public void IntroduirDades(Integer diputat,int votacio){
 		votacions[votacio].add(diputat);
 	}
 	public ArrayList[] consultaVotacions(){
