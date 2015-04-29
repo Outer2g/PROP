@@ -6,12 +6,12 @@ import java.util.Vector;
 public class Event {
 	private String nom;
 	private Date data;
-	private String tipus;
-	private Vector<Diputat> diputatsAssociats;
-	private boolean trobat(Diputat d){
+	private String tipus;	
+	private Vector<Integer> diputatsAssociats;
+	private boolean trobat(Integer d){
 		int n=diputatsAssociats.size();
 		for(int i=0;i<n;++i){
-			if(diputatsAssociats.get(i).nom.equals(d.nom)) return true;
+			if(diputatsAssociats.get(i).equals(d)) return true;
 		}
 		return false;
 	}
@@ -19,9 +19,9 @@ public class Event {
 		nom=nomEvent;
 		data= dataEvent;
 		this.tipus=tipusEvent;
-		this.diputatsAssociats= new Vector<Diputat>();
+		this.diputatsAssociats= new Vector<Integer>();
 	}
-	public void associarDiputat(Diputat diputat){
+	public void associarDiputat(int diputat){
 		Exception exc=new Exception("Diputat ja estava associat");
 		try{
 			if(trobat(diputat)) throw exc;
@@ -32,7 +32,7 @@ public class Event {
 			
 		}
 	}
-	public void eliminarDiputat(Diputat diputat){
+	public void eliminarDiputat(int diputat){
 		Exception myexc=new Exception("Error al eliminar diputat: no hi ha diputats associats"
 				+ " o el diputat no existeix");
 		try{
@@ -43,11 +43,11 @@ public class Event {
 			System.out.println(p.getMessage());
 		}
 	}
-	public void eliminarDiputats(Vector<Diputat> diputats){
+	public void eliminarDiputats(Vector<Integer> diputats){
 		this.diputatsAssociats.removeAll(diputats);
 	}
 	public void associarParlament(Parlament parlamentAssociat){
-		this.diputatsAssociats=new Vector<Diputat>(parlamentAssociat.getParlament());
+		this.diputatsAssociats=new Vector<Integer>(parlamentAssociat.getParlament());
 	}
 	public void eliminarParlament(Parlament parlament){
 		Exception exc= new Exception("Error: No hi ha cap diputat associat");
@@ -59,7 +59,7 @@ public class Event {
 			System.out.println(e.getMessage());
 		}
 	}
-	public void associarDiputats(Vector<Diputat> diputats){
+	public void associarDiputats(Vector<Integer> diputats){
 		boolean b= this.diputatsAssociats.addAll(diputats);
 	}
 	
@@ -86,8 +86,8 @@ public class Event {
 	public String consultarTipus(){
 		return String.valueOf(this.tipus);
 	}
-	public Vector<Diputat> consultarAssociats(){
-		return (Vector<Diputat>) this.diputatsAssociats.clone();
+	public Vector<Integer> consultarAssociats(){
+		return (Vector<Integer>) this.diputatsAssociats.clone();
 	}
 }
 	
