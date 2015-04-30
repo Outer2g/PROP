@@ -1,11 +1,10 @@
 
 	package domini.drivers;
 
-import java.util.Date;
 import java.util.Scanner;
 import java.util.Vector;
 
-import domini.Diputat;
+import domini.Data;
 import domini.Event;
 import domini.Parlament;
 
@@ -104,19 +103,24 @@ import domini.Parlament;
 			int dia=inputs.nextInt();
 			int mes=inputs.nextInt();
 			int any=inputs.nextInt();
-			Date d= new Date(any,mes,dia);
+			Data d;
+			try {
+				d = new Data(dia,mes,any);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 			evento.modificarData(d);
 		}
 		private static void tryConsultarData(){
 			System.out.print("Data del event ");
-			Date d=evento.consultarData();
+			Data d=evento.consultarData();
 			System.out.println((d.getDay())+" "+d.getMonth()+" "+(d.getYear()));
 		}
 		
 		public static void main(String[] args) {
 			int n=0;
 			Scanner inputs=new Scanner(System.in);
-			Date data=new Date(2015,04,17);
+			Data data=new Data(2015,04,17);
 			evento=new Event("tipus1",data,"nom1");
 			parlament=new Parlament();
 			usage();

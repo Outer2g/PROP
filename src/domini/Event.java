@@ -1,13 +1,12 @@
 package domini;
 
-import java.util.Date;
 import java.util.Vector;
 
 import domini.drivers.EventDriver;
 
 public class Event {
 	private String nom;
-	private Date data;
+	private Data data;
 	private String tipus;	
 	private Vector<Integer> diputatsAssociats;
 	private boolean trobat(Integer d){
@@ -17,7 +16,7 @@ public class Event {
 		}
 		return false;
 	}
-	public Event(String tipusEvent,Date dataEvent,String nomEvent){
+	public Event(String tipusEvent,Data dataEvent,String nomEvent){
 		nom=nomEvent;
 		data= dataEvent;
 		this.tipus=tipusEvent;
@@ -73,7 +72,7 @@ public class Event {
 			this.tipus=nom;
 		}
 	}
-	public void modificarData(Date data){
+	public void modificarData(Data data){
 		this.data=data;
 	}
 	public void modificarNom(String s){
@@ -82,7 +81,7 @@ public class Event {
 	public String consultarNomEvent(){
 		return this.nom;
 	}
-	public Date consultarData(){
+	public Data consultarData(){
 		return this.data;
 	}
 	public String consultarTipus(){
