@@ -17,12 +17,13 @@ import domini.Parlament;
 			int n=evento.consultarAssociats().size();
 			System.out.print("diputats: ");
 			for(int i=0;i<n;++i){
-				System.out.print(evento.consultarAssociats().get(i).nom+" ");
+				System.out.print(evento.consultarAssociats().get(i)+" ");
 			}
 			System.out.println();
 		}
 		private static void tryAssociarDiputat(){
 			System.out.print("especifiqui el diputat que vol associar:");
+<<<<<<< HEAD
 			String s=inputs.next();
 			Diputat d= new Diputat(s);
 			try {
@@ -30,22 +31,26 @@ import domini.Parlament;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
+=======
+			int d=inputs.nextInt();
+			Integer diputat=new Integer(d);
+			evento.associarDiputat(diputat);
+>>>>>>> origin/master
 		}
 		private static void tryEliminarDiputat(){
 			System.out.print("especifiqui el diputat que vol desassociar");
-			String s=inputs.next();
-			Diputat d=new Diputat(s);
-			evento.eliminarDiputat(d);			
+			int s=inputs.nextInt();
+			Integer d=new Integer(s);
+			evento.eliminarDiputat(d);
 		}
 		private static void tryAssociarDiputats(){
 			System.out.print("Especifiqui el numero de diputats a associar:");
 			int n=inputs.nextInt();
-			Vector<Diputat> v = new Vector<Diputat>(n);
+			Vector<Integer> v = new Vector<Integer>(n);
 			System.out.print("Especifiqui els diputats: ");
-			Diputat d;
+			Integer d;
 			for(int i=0;i<n;++i){
-				String s=inputs.next();
-				d=new Diputat(s);
+				d=new Integer(inputs.nextInt());
 				v.addElement(d);
 			}
 			if(n>0)evento.associarDiputats(v);
@@ -53,13 +58,11 @@ import domini.Parlament;
 		private static void tryEliminarDiputats(){
 			System.out.print("Especifiqui el numero de dipuats a desassociar: ");
 			int n= inputs.nextInt();
-			Vector<Diputat> v=new Vector<Diputat>(n);
-			Diputat d;
+			Vector<Integer> v=new Vector<Integer>(n);
+			Integer d;
 			if(n>0)System.out.print("Especifiqui els diputats: ");
-			String s;
 			for(int i=0;i<n;++i){
-				s=inputs.next();
-				d=new Diputat(s);
+				d=new Integer(inputs.nextInt());
 				v.addElement(d);
 			}
 			evento.eliminarDiputats(v);
@@ -143,9 +146,6 @@ import domini.Parlament;
 				case 2:
 					tryAssociarDiputats();
 					break;
-				case 12:
-					imprimeDiputados();
-					break;
 				case 3:
 					tryEliminarDiputats();
 					break;
@@ -155,6 +155,7 @@ import domini.Parlament;
 				case 5:
 					tryEliminarParlament();
 					break;
+<<<<<<< HEAD
 				case 6:
 					tryModificarTipusEvent();
 					break;
@@ -172,6 +173,10 @@ import domini.Parlament;
 					break;
 				case 11:
 					tryConsultarData();
+=======
+				case 12:
+					imprimeDiputados();
+>>>>>>> origin/master
 					break;
 				}
 			}
