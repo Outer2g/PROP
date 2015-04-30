@@ -14,7 +14,7 @@ public class Data {
 		this.mes=mes;
 		this.any=any;
 		if(mes>12) throw new Exception("mes no valid");
-		if(mes==1 || mes== 7 && dia<=31){
+		if((mes==1 || mes== 7) && dia<=31){
 			this.dia=dia;
 			this.mes=mes;
 			this.any=any;
