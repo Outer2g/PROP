@@ -106,22 +106,28 @@ import domini.Parlament;
 			Data d;
 			try {
 				d = new Data(dia,mes,any);
+				evento.modificarData(d);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-			evento.modificarData(d);
 		}
 		private static void tryConsultarData(){
 			System.out.print("Data del event ");
 			Data d=evento.consultarData();
-			System.out.println((d.getDay())+" "+d.getMonth()+" "+(d.getYear()));
+			System.out.println((d.getDia())+" "+d.getMes()+" "+(d.getAny()));
 		}
 		
-		public static void main(String[] args) {
+		public static void main(String[] args){
 			int n=0;
 			Scanner inputs=new Scanner(System.in);
-			Data data=new Data(2015,04,17);
+			try{
+				Data data=new Data(17,04,2015);
 			evento=new Event("tipus1",data,"nom1");
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+				System.exit(0);
+			}
 			parlament=new Parlament();
 			usage();
 			while (n!=-1){
