@@ -17,50 +17,39 @@ import domini.Parlament;
 			int n=evento.consultarAssociats().size();
 			System.out.print("diputats: ");
 			for(int i=0;i<n;++i){
-				System.out.print(evento.consultarAssociats().get(i).nom+" ");
+				System.out.print(evento.consultarAssociats().get(i)+" ");
 			}
 			System.out.println();
 		}
 		private static void tryAssociarDiputat(){
 			System.out.print("especifiqui el diputat que vol associar:");
-			String s=inputs.next();
-			Diputat d= new Diputat(s);
 			try {
-				evento.associarDiputat(d);
+				evento.associarDiputat(inputs.nextInt());
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
 		private static void tryEliminarDiputat(){
 			System.out.print("especifiqui el diputat que vol desassociar");
-			String s=inputs.next();
-			Diputat d=new Diputat(s);
-			evento.eliminarDiputat(d);			
+			evento.eliminarDiputat(inputs.nextInt());			
 		}
 		private static void tryAssociarDiputats(){
 			System.out.print("Especifiqui el numero de diputats a associar:");
 			int n=inputs.nextInt();
-			Vector<Diputat> v = new Vector<Diputat>(n);
+			Vector<Integer> v = new Vector<Integer>(n);
 			System.out.print("Especifiqui els diputats: ");
-			Diputat d;
 			for(int i=0;i<n;++i){
-				String s=inputs.next();
-				d=new Diputat(s);
-				v.addElement(d);
+				v.addElement(inputs.nextInt());
 			}
 			if(n>0)evento.associarDiputats(v);
 		}
 		private static void tryEliminarDiputats(){
 			System.out.print("Especifiqui el numero de dipuats a desassociar: ");
 			int n= inputs.nextInt();
-			Vector<Diputat> v=new Vector<Diputat>(n);
-			Diputat d;
+			Vector<Integer> v=new Vector<Integer>(n);
 			if(n>0)System.out.print("Especifiqui els diputats: ");
-			String s;
 			for(int i=0;i<n;++i){
-				s=inputs.next();
-				d=new Diputat(s);
-				v.addElement(d);
+				v.addElement(inputs.nextInt());
 			}
 			evento.eliminarDiputats(v);
 		}
@@ -121,7 +110,7 @@ import domini.Parlament;
 		private static void tryConsultarData(){
 			System.out.print("Data del event ");
 			Date d=evento.consultarData();
-			System.out.println(d.getDay()+" "+d.getMonth()+" "+d.getYear());
+			System.out.println((d.getDay())+" "+d.getMonth()+" "+(d.getYear()));
 		}
 		
 		public static void main(String[] args) {
