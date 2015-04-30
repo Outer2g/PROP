@@ -25,7 +25,11 @@ import domini.Parlament;
 			System.out.print("especifiqui el diputat que vol associar:");
 			String s=inputs.next();
 			Diputat d= new Diputat(s);
-			evento.associarDiputat(d);
+			try {
+				evento.associarDiputat(d);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		private static void tryEliminarDiputat(){
 			System.out.print("especifiqui el diputat que vol desassociar");
@@ -116,7 +120,8 @@ import domini.Parlament;
 		}
 		private static void tryConsultarData(){
 			System.out.print("Data del event ");
-			System.out.println(evento.consultarData());
+			Date d=evento.consultarData();
+			System.out.println(d.getDay()+" "+d.getMonth()+" "+d.getYear());
 		}
 		
 		public static void main(String[] args) {
