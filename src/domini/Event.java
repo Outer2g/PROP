@@ -1,94 +1,51 @@
 package domini;
-
+ 
 import java.util.Vector;
-
-import domini.drivers.EventDriver;
-
+  
 public class Event {
-	private String nom;
-	private Data data;
-	private String tipus;	
-	private Vector<Integer> diputatsAssociats;
-	private boolean trobat(Integer d){
-		int n=diputatsAssociats.size();
-		for(int i=0;i<n;++i){
-			if(diputatsAssociats.get(i).equals(d)) return true;
-		}
-		return false;
-	}
-	public Event(String tipusEvent,Data dataEvent,String nomEvent){
-		nom=nomEvent;
-		data= dataEvent;
-		this.tipus=tipusEvent;
-		this.diputatsAssociats= new Vector<Integer>();
-	}
-	public void associarDiputat(Integer diputat){
-		Exception exc=new Exception("Diputat ja estava associat");
-		try{
-			if(trobat(diputat)) throw exc;
-			else this.diputatsAssociats.addElement(diputat);
-		}
-		catch(Exception e){
-			EventDriver.imprimirException(e.getMessage());
-			
-		}
-	}
-	public void eliminarDiputat(Integer diputat){
-		Exception myexc=new Exception("Error al eliminar diputat: no hi ha diputats associats"
-				+ " o el diputat no existeix");
-		try{
-			if(this.diputatsAssociats.isEmpty()) throw myexc;
-			if (!this.diputatsAssociats.removeElement(diputat)) throw myexc;
-		}
-		catch(Exception p){
-			EventDriver.imprimirException(p.getMessage());
-		}
-	}
-	public void eliminarDiputats(Vector<Integer> diputats){
-		this.diputatsAssociats.removeAll(diputats);
-	}
-	public void associarParlament(Parlament parlamentAssociat){
-		this.diputatsAssociats=new Vector<Integer>(parlamentAssociat.getParlament());
-	}
-	public void eliminarParlament(Parlament parlament){
-		Exception exc= new Exception("Error: No hi ha cap diputat associat");
-		try{
-			if(this.diputatsAssociats.size()==0) throw exc;
-			else this.diputatsAssociats.removeAll(parlament.getParlament());
-		}
-		catch(Exception e){
-			EventDriver.imprimirException(e.getMessage());
-		}
-	}
-	public void associarDiputats(Vector<Integer> diputats){
-		boolean b= this.diputatsAssociats.addAll(diputats);
-	}
-	
-	public void modificarTipus(String nom){
-		if (nom.contentEquals("votacio")){
-			diputatsAssociats.removeAllElements();
-		}
-		else{
-			this.tipus=nom;
-		}
-	}
-	public void modificarData(Data data){
-		this.data=data;
-	}
-	public void modificarNom(String s){
-		this.nom=s;
-	}
-	public String consultarNomEvent(){
-		return this.nom;
-	}
-	public Data consultarData(){
-		return this.data;
-	}
-	public String consultarTipus(){
-		return String.valueOf(this.tipus);
-	}
-	public Vector<Integer> consultarAssociats(){
-		return (Vector<Integer>) this.diputatsAssociats.clone();
-	}
+        private String nom;
+        private Data data;
+        private int tipus;     
+        private Vector<Integer> diputatsAssociats;
+        private boolean trobat(Integer d){
+                int n=diputatsAssociats.size();
+                for(int i=0;i<n;++i){
+                        if(diputatsAssociats.get(i).equals(d)) return true;
+                }
+                return false;
+        }
+        public Event(int tipusEvent,Data dataEvent,String nomEvent){
+                nom=nomEvent;
+                data= dataEvent;
+                this.tipus=tipusEvent;
+                this.diputatsAssociats= new Vector<Integer>();
+        }
+       
+        public void eliminarDiputats(Vector<Integer> diputats){
+                this.diputatsAssociats.removeAll(diputats);
+        }
+       
+        public boolean associarDiputats(Vector<Integer> diputats){
+                for (int d: diputats) {
+                        if (diputatsAssociats.contains(d)) return false;
+                }
+                this.diputatsAssociats.addAll(diputats);
+                return true;
+        }
+               
+        public void modificarData(Data data){
+                this.data=data;
+        }
+        public String consultarNomEvent(){
+                return this.nom;
+        }
+        public Data consultarData(){
+                return this.data;
+        }
+        public Integer consultarTipus(){
+                return (this.tipus);
+        }
+        public Vector<Integer> consultarAssociats(){
+                return this.diputatsAssociats;
+        }
 }
-	

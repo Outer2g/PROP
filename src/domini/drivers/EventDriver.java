@@ -20,18 +20,6 @@ import domini.Parlament;
 			}
 			System.out.println();
 		}
-		private static void tryAssociarDiputat(){
-			System.out.print("especifiqui el diputat que vol associar:");
-			try {
-				evento.associarDiputat(inputs.nextInt());
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}
-		private static void tryEliminarDiputat(){
-			System.out.print("especifiqui el diputat que vol desassociar");
-			evento.eliminarDiputat(inputs.nextInt());			
-		}
 		private static void tryAssociarDiputats(){
 			System.out.print("Especifiqui el numero de diputats a associar:");
 			int n=inputs.nextInt();
@@ -40,7 +28,12 @@ import domini.Parlament;
 			for(int i=0;i<n;++i){
 				v.addElement(inputs.nextInt());
 			}
+			try{
 			if(n>0)evento.associarDiputats(v);
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+			}
 		}
 		private static void tryEliminarDiputats(){
 			System.out.print("Especifiqui el numero de dipuats a desassociar: ");
@@ -50,49 +43,30 @@ import domini.Parlament;
 			for(int i=0;i<n;++i){
 				v.addElement(inputs.nextInt());
 			}
-			evento.eliminarDiputats(v);
-		}
-		private static void tryAssociarParlament(){
-			evento.associarParlament(parlament);
-			System.out.println("s'ha afegit el parlament (antonio y jose)");
+			try{
+				evento.eliminarDiputats(v);
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+			}
 		}
 		private static void usage(){
 			System.out.println("Escriu el numero de la prova desitjada: ");
-			System.out.println("0: associar diputat");
-			System.out.println("1: desassociar diputat");
-			System.out.println("2: associar varis diputats");
-			System.out.println("3: desassociar diversos diputats");
-			System.out.println("4: Associar Parlament");
-			System.out.println("5: Desassociar Parlament");
-			System.out.println("6: Modificar tipus d'event");
-			System.out.println("7: Consultar tipus d'event");
-			System.out.println("8: Modificar nom del event");
-			System.out.println("9: Consultar nom del event");
-			System.out.println("10: Modificar data");
-			System.out.println("11:  Consultar data");
-			System.out.println("12: imprimeix diputats associats");
-		}
-		private static void tryEliminarParlament(){
-			evento.eliminarParlament(parlament);
-
-			System.out.println("s'ha dessasociat el parlament");
+			System.out.println("0: associar diputats");
+			System.out.println("1: desassociar diputats");
+			System.out.println("2: Modificar tipus d'event");
+			System.out.println("3: Consultar tipus d'event");
+			System.out.println("4: Consultar nom del event");
+			System.out.println("5: Modificar data");
+			System.out.println("6:  Consultar data");
+			System.out.println("7: imprimeix diputats associats");
 		}
 		public static void imprimirException(String s){
 			System.out.println(s);
 		}
-		private static void tryModificarTipusEvent(){
-			System.out.println("introdueixi el nou tipus");
-			String s= inputs.next();
-			evento.modificarTipus(s);
-		}
 		private static void tryConsultaTipusEvent(){
 			System.out.print("Tipus event: ");
 			System.out.println(evento.consultarTipus());
-		}
-		private static void tryModificarNom(){
-			System.out.print("introdueixi el nou nom");
-			String s=inputs.next();
-			evento.modificarNom(s);
 		}
 		private static void tryConsultarNom(){
 			System.out.print("Nom event: ");
@@ -122,7 +96,7 @@ import domini.Parlament;
 			Scanner inputs=new Scanner(System.in);
 			try{
 				Data data=new Data(17,04,2015);
-			evento=new Event("tipus1",data,"nom1");
+			evento=new Event(1,data,"nom1");
 			}
 			catch(Exception e){
 				System.out.println(e.getMessage());
@@ -134,42 +108,24 @@ import domini.Parlament;
 				n=inputs.nextInt();
 				switch (n){
 				case 0:
-					tryAssociarDiputat();
-					break;
-				case 1:
-					tryEliminarDiputat();
-					break;
-				case 2:
 					tryAssociarDiputats();
 					break;
-				case 12:
+				case 7:
 					imprimeDiputados();
 					break;
-				case 3:
+				case 1:
 					tryEliminarDiputats();
 					break;
-				case 4:
-					tryAssociarParlament();
-					break;
-				case 5:
-					tryEliminarParlament();
-					break;
-				case 6:
-					tryModificarTipusEvent();
-					break;
-				case 7:
+				case 3:
 					tryConsultaTipusEvent();
 					break;
-				case 8:
-					tryModificarNom();
-					break;
-				case 9:
+				case 4:
 					tryConsultarNom();
 					break;
-				case 10:
+				case 5:
 					tryModificarData();
 					break;
-				case 11:
+				case 6:
 					tryConsultarData();
 					break;
 				}

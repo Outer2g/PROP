@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class EventVotacio extends Event {
 	private ArrayList<ArrayList<Integer>> votacions;
-	public EventVotacio(String tipusEvent, Data dataEvent, String nomEvent) {
+	public EventVotacio(int tipusEvent, Data dataEvent, String nomEvent) {
 		super(tipusEvent, dataEvent, nomEvent);
 	}
 	public EventVotacio(Data dataEvent,String nomEvent){
-		super("Votacio",dataEvent,nomEvent);
+		super(2,dataEvent,nomEvent);
 		votacions= new ArrayList<ArrayList<Integer>>(4);
 		for(int i=0;i<4;++i)votacions.add(new ArrayList<Integer>());
 	}
