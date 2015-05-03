@@ -1,8 +1,6 @@
-package domini.drivers;
+package domini;
 
 import java.util.Scanner;
-
-import domini.Data;
 
 public class DataDriver {
 	private static Data data;

@@ -1,12 +1,8 @@
 
-	package domini.drivers;
+	package domini;
 
 import java.util.Scanner;
 import java.util.Vector;
-
-import domini.Data;
-import domini.Event;
-import domini.Parlament;
 
 	public class EventDriver {
 		private static Data data;
@@ -27,14 +23,12 @@ import domini.Parlament;
 			Vector<Integer> v = new Vector<Integer>(n);
 			System.out.print("Especifiqui els diputats: ");
 			for(int i=0;i<n;++i){
-				v.addElement(inputs.nextInt());
+				Integer p= new Integer(inputs.nextInt());
+				v.addElement(p);
 			}
-			try{
 			if(n>0)evento.associarDiputats(v);
-			}
-			catch(Exception e){
-				System.out.println(e.getMessage());
-			}
+				System.out.print("Diputats Associats: ");
+				for(int i=0;i<n;++i) System.out.print(v.get(i)+" ");
 		}
 		private static void tryEliminarDiputats(){
 			System.out.print("Especifiqui el numero de dipuats a desassociar: ");
@@ -44,12 +38,9 @@ import domini.Parlament;
 			for(int i=0;i<n;++i){
 				v.addElement(inputs.nextInt());
 			}
-			try{
 				evento.eliminarDiputats(v);
-			}
-			catch(Exception e){
-				System.out.println(e.getMessage());
-			}
+				System.out.println("Diputats eliminats");
+			
 		}
 		private static void usage(){
 			System.out.println("Escriu el numero de la prova desitjada: ");

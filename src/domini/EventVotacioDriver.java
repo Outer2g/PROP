@@ -1,13 +1,9 @@
-package domini.drivers;
+package domini;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-import domini.Data;
-import domini.Diputat;
-import domini.EventVotacio;
 
 public class EventVotacioDriver {
 	private static EventVotacio evento;
