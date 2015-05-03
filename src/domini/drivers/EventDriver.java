@@ -9,6 +9,7 @@ import domini.Event;
 import domini.Parlament;
 
 	public class EventDriver {
+		private static Data data;
 		public static Event evento;
 		public static Parlament parlament;
 		public static Scanner inputs= new Scanner(System.in);
@@ -54,7 +55,7 @@ import domini.Parlament;
 			System.out.println("Escriu el numero de la prova desitjada: ");
 			System.out.println("0: associar diputats");
 			System.out.println("1: desassociar diputats");
-			System.out.println("2: Modificar tipus d'event");
+			System.out.println("2: cambiar tipus event per fer proves");
 			System.out.println("3: Consultar tipus d'event");
 			System.out.println("4: Consultar nom del event");
 			System.out.println("5: Modificar data");
@@ -77,10 +78,9 @@ import domini.Parlament;
 			int dia=inputs.nextInt();
 			int mes=inputs.nextInt();
 			int any=inputs.nextInt();
-			Data d;
 			try {
-				d = new Data(dia,mes,any);
-				evento.modificarData(d);
+				data= new Data(dia,mes,any);
+				evento.modificarData(data);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -90,12 +90,21 @@ import domini.Parlament;
 			Data d=evento.consultarData();
 			System.out.println((d.getDia())+" "+d.getMes()+" "+(d.getAny()));
 		}
+		private static void cambiaTipus(){
+			System.out.println("Introdueixi el tipus d'event:");
+			System.out.println("0: Reunio");
+			System.out.println("1: activitat esportiva");
+			System.out.println("3: dinar");
+			System.out.println("4:conferencia");
+			int p=inputs.nextInt();
+			evento=new Event(p,data,"nom1");
+		}
 		
 		public static void main(String[] args){
 			int n=0;
 			Scanner inputs=new Scanner(System.in);
 			try{
-				Data data=new Data(17,04,2015);
+				data=new Data(17,04,2015);
 			evento=new Event(1,data,"nom1");
 			}
 			catch(Exception e){
@@ -115,6 +124,9 @@ import domini.Parlament;
 					break;
 				case 1:
 					tryEliminarDiputats();
+					break;
+				case 2:
+					cambiaTipus();
 					break;
 				case 3:
 					tryConsultaTipusEvent();
