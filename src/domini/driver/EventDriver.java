@@ -6,12 +6,10 @@ import java.util.Vector;
 
 import domini.Data;
 import domini.Event;
-import domini.Parlament;
 
 	public class EventDriver {
 		private static Data data;
 		public static Event evento;
-		public static Parlament parlament;
 		public static Scanner inputs= new Scanner(System.in);
 		public static void imprimeDiputados(){
 			int n=evento.consultarAssociats().size();
@@ -107,7 +105,6 @@ import domini.Parlament;
 				System.out.println(e.getMessage());
 				System.exit(0);
 			}
-			parlament=new Parlament();
 			usage();
 			while (n!=-1){
 				n=inputs.nextInt();
