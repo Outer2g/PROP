@@ -10,7 +10,7 @@ public class GraphLouvain<N extends Node, E extends Edge> extends Graph<N,E> {
 	
 	public Integer nb_neighbors(Node node){
 		return nb_nodes;}
-	public double nb_selfloops(Integer node){
+	public double nb_selfloops(Node nodes){
 		return nb_links;}
 	public double weighted_degree(Node node){
 		return nb_links;}
@@ -21,7 +21,6 @@ public class GraphLouvain<N extends Node, E extends Edge> extends Graph<N,E> {
 	}
 	//getWeights;
 	public HashMap<Integer, Double> getWeights() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

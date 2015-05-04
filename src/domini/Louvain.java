@@ -9,7 +9,7 @@ public class Louvain {
 		private GraphLouvain g;
 		private int size;
 		private HashMap<Integer,Double> neigh_weight;//Peso de los vecinos
-		private HashMap<Node,Integer> neigh_pos;
+		private HashMap<Integer,Integer> neigh_pos;
 		private Integer neigh_last;
 		private HashMap<Node,Integer> n2c;//comunidad a la que pertenece el nodo
 		private HashMap<Integer,Double> in,tot;
@@ -21,7 +21,7 @@ public class Louvain {
 			size=g.GetAllNodes().size();
 			
 			neigh_weight= new HashMap<Integer,Double>();
-			neigh_pos= new HashMap<Node,Integer>();
+			neigh_pos= new HashMap<Integer,Integer>();
 			neigh_last=0;
 			
 			n2c=new HashMap<Node,Integer>();
@@ -31,7 +31,7 @@ public class Louvain {
 			for(int i=0;i<size;++i){
 				n2c.put(nodes[i],i);
 				tot.put(i,g.weighted_degree(nodes[i]));
-				in.put(i,g.nb_selfloops(i));
+				in.put(i,g.nb_selfloops(nodes[i]));
 			}
 			this.steps=steps;
 			this.minIncrease=minIncrease;
@@ -113,7 +113,7 @@ public class Louvain {
 			neigh_last=0;
 			Vector<Pair<Node,Double>> p= g.neighbors(node);
 			int degree=g.nb_neighbors(node);
-			neigh_pos.put(nodes[0],n2c.get(node));
+			neigh_pos.put(0,n2c.get(node));
 			neigh_last=1;
 			for(int i=0;i<degree;++i){
 				Node neigh=p.get(i).GetFirst();
@@ -125,7 +125,7 @@ public class Louvain {
 					if(neigh_weight.get(neighComm)==-1){
 						neigh_weight.put(neighComm, 0.0);
 						++neigh_last;
-						neigh_pos.put(nodes[neigh_last], neighComm);
+						neigh_pos.put(neigh_last, neighComm);
 						
 					}
 					double w=neigh_weight.get(neighComm);
@@ -145,7 +145,7 @@ public class Louvain {
 		private double modularityGain(Node node,Integer neighPos,Double neighWeight,double weightDegree){
 			double totcommunity=tot.get(neighPos);
 			double degc =neighWeight;
-			double m=g.total_weight;
+			double m=g.getTotalWeight();
 			double degree=weightDegree;
 			return (degree-(totcommunity*degc/m));
 			}
