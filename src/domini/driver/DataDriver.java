@@ -1,12 +1,15 @@
-package domini;
+package domini.driver;
 
 import java.util.Scanner;
+
+import domini.Data;
 
 public class DataDriver {
 	private static Data data;
 	public static Scanner inputs= new Scanner(System.in);
 	private static void imprimeixCasos(){
 		System.out.println("Escriu el numero de la prova desitjada:");
+		System.out.println("-1: finalitza el programa");
 		System.out.println("1: modifica Data");
 		System.out.println("2:consulta Data");
 	}
@@ -26,7 +29,7 @@ public class DataDriver {
 		System.out.println("Data: ");
 		System.out.println(data.getDia()+ " "+ data.getMes()+" "+data.getAny());
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception 	 {
 		try{
 			data = new Data(15,3,2015);
 		}

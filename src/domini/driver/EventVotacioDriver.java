@@ -1,15 +1,19 @@
-package domini;
+package domini.driver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import domini.Data;
+import domini.EventVotacio;
+
 public class EventVotacioDriver {
 	private static EventVotacio evento;
 	private static Scanner inputs= new Scanner(System.in);
 	private static void imprimeixUsage(){
 		System.out.println("Llista de comandes:");
+		System.out.println("-1: finalitza el programa");
 		System.out.println("1: afegir diputat i la seva votació");
 		System.out.println("2: consultar votacions");
 	}

@@ -26,8 +26,8 @@ public class Event {
         }
        
         public boolean associarDiputats(Vector<Integer> diputats){
-                for (int d: diputats) {
-                        if (diputatsAssociats.contains(d)) return false;
+                for (Integer d: diputats) {
+                        if (diputatsAssociats.contains(d))return false;
                 }
                 this.diputatsAssociats.addAll(diputats);
                 return true;

@@ -1,8 +1,12 @@
 
-	package domini;
+	package domini.driver;
 
 import java.util.Scanner;
 import java.util.Vector;
+
+import domini.Data;
+import domini.Event;
+import domini.Parlament;
 
 	public class EventDriver {
 		private static Data data;
@@ -44,6 +48,7 @@ import java.util.Vector;
 		}
 		private static void usage(){
 			System.out.println("Escriu el numero de la prova desitjada: ");
+			System.out.println("-1: finalitza el programa");
 			System.out.println("0: associar diputats");
 			System.out.println("1: desassociar diputats");
 			System.out.println("2: cambiar tipus event per fer proves");
